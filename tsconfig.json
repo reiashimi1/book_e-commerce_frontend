@@ -6,6 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "typeRoots" : ["node_modules/@types",
+      "src/images/declaration.d.ts"
+    ],
     "allowJs": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
