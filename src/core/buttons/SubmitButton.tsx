@@ -5,15 +5,15 @@ import { FaSpinner } from 'react-icons/fa';
 type buttonType = {
   onClick: () => void;
   disabled?: boolean;
-  loading: boolean;
-  label: string;
+  loading?: boolean;
+  label: string | React.ReactNode;
   className?: string;
 };
 
 const SubmitButton = ({
   onClick,
   disabled = false,
-  loading,
+  loading = false,
   label,
   className,
   ...props
