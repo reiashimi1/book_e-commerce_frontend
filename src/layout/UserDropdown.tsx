@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineLogout, AiOutlineUser } from 'react-icons/ai';
 import _ from 'lodash';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const UserDropdown = () => {
   // const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../layout/Layout';
 import bookReader from '../images/book-reader.jpg';
-import { FaInfo, FaRegCheckSquare } from 'react-icons/fa';
+import { FaInfo } from 'react-icons/fa';
 import SubmitButton from '../core/buttons/SubmitButton';
 import { LuView } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
