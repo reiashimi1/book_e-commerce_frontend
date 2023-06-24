@@ -12,6 +12,7 @@ type InputProps = {
   disabled?: boolean;
   height: string;
   required?: boolean;
+  bgColor?: string;
 };
 
 const Input = ({
@@ -25,6 +26,7 @@ const Input = ({
   disabled = false,
   height,
   required = false,
+  bgColor = "bg-gray-200",
   ...props
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +48,7 @@ const Input = ({
         disabled={disabled}
         value={value || ''}
         type={showPassword ? 'text' : type}
-        className={`appearance-none ${height} bg-gray-200 relative block w-full mt-2 px-3 py-2 border border-gray-200 shadow-sm placeholder-gray-500 rounded text-gray-900 focus:outline-none focus:ring-cyan-900 focus:border-cyan-900 focus:z-10 text-xs`}
+        className={`${height} ${bgColor} ${disabled && "bg-gray-300"} appearance-none  relative block w-full mt-2 px-3 py-2 border border-gray-200 shadow-sm placeholder-gray-500 rounded text-gray-900 focus:outline-none focus:ring-cyan-900 focus:border-cyan-900 focus:z-10 text-xs`}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         {...props}

@@ -4,8 +4,10 @@ import { Routes } from 'react-router';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import GuestRoute from './GuestRoute';
-import RegisterPage from "../pages/RegisterPage";
-import AdminHomePage from "../pages/AdminHomePage";
+import RegisterPage from '../pages/RegisterPage';
+import AdminHomePage from '../pages/AdminHomePage';
+import BooksPage from '../pages/BooksPage';
+import BuyBookPage from "../pages/BuyBookPage";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +19,8 @@ const AppRoutes = () => {
 
           <Route path="/" element={<HomePage />} />
           <Route path="/admin-home" element={<AdminHomePage />} />
+          <Route path="/books" element={<BooksPage />} />
+          <Route path="/books/:id" element={<BuyBookPage />} />
         </Route>
       </Routes>
     </Router>

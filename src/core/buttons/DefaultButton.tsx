@@ -6,7 +6,7 @@ type buttonType = {
   bgColor?: string;
   bgColorHover?: string;
   textColor?: string;
-  disabled: boolean;
+  disabled?: boolean;
   className?: string
 };
 
@@ -17,10 +17,10 @@ const DefaultButton = ({
   bgColorHover,
   textColor,
   disabled = false,
-  className = "w-full",
+  className = "w-full justify-center",
   ...props
 }: buttonType) => {
-  const defaultClassName = `group relative flex justify-center border border-transparent font-medium rounded-md ${
+  const defaultClassName = `group relative flex border border-transparent font-medium rounded-md ${
     textColor || 'text-white'
   } py-2 px-4 text-sm  ${className}
   ${disabled ? 'bg-gray-400' : bgColor || 'bg-cyan-800'}  ${
