@@ -5,16 +5,17 @@ import DefaultButton from './DefaultButton';
 type buttonType = {
   onClick: () => void;
   label: string;
+  displayIcon?: boolean;
   className?: string;
   disabled?: boolean;
 };
 
-const ViewButton = ({ onClick, label, className, disabled = false }: buttonType) => {
+const ViewButton = ({ onClick, label, className, displayIcon = true, disabled = false }: buttonType) => {
   return (
     <DefaultButton
       label={
         <div className="flex items-center">
-          <FaEye className="mr-1"/>
+          {displayIcon && <FaEye className="mr-1" />}
           {label}
         </div>
       }
