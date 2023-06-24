@@ -10,6 +10,7 @@ import BooksPage from '../pages/BooksPage';
 import BuyBookPage from "../pages/BuyBookPage";
 import BookManagementPage from "../pages/BookManagementPage";
 import MyOrdersPage from "../pages/MyOrdersPage";
+import AllOrdersPage from "../pages/AllOrdersPage";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
           <Route path="/books/:id" element={<BuyBookPage />} />
           <Route path="/books-admin" element={<BookManagementPage />} />
           <Route path="/orders" element={<MyOrdersPage />} />
+          <Route path="/all-orders" element={<AllOrdersPage />} />
         </Route>
       </Routes>
     </Router>
