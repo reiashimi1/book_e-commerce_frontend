@@ -9,6 +9,7 @@ import AdminHomePage from '../pages/AdminHomePage';
 import BooksPage from '../pages/BooksPage';
 import BuyBookPage from "../pages/BuyBookPage";
 import BookManagementPage from "../pages/BookManagementPage";
+import MyOrdersPage from "../pages/MyOrdersPage";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
           <Route path="/books" element={<BooksPage />} />
           <Route path="/books/:id" element={<BuyBookPage />} />
           <Route path="/books-admin" element={<BookManagementPage />} />
+          <Route path="/orders" element={<MyOrdersPage />} />
         </Route>
       </Routes>
     </Router>

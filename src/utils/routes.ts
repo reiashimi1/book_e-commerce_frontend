@@ -1,5 +1,3 @@
-import React from 'react';
-
 export type routeType = {
   label: string,
   redirectTo: string,
@@ -28,7 +26,7 @@ export const Routes = [
     permission: 'admin',
   },
   {
-    label: 'Orders',
+    label: 'My orders',
     redirectTo: '/orders',
     permission: 'customer',
   },

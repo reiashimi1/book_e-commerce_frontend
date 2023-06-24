@@ -13,11 +13,13 @@
     "@types/react-dom": "^18.2.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
+    "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.0.0-rc.6",
     "typescript": "^5.0.4",
     "web-vitals": "^2.1.4"
   },
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.195",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
     "autoprefixer": "^10.4.14",
