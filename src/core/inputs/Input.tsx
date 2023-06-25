@@ -5,7 +5,7 @@ type InputProps = {
   label: string;
   placeholder: string;
   onChange: (value: string) => void;
-  error?: boolean;
+  error?: string;
   value: string;
   type?: string;
   className?: string;
@@ -53,7 +53,7 @@ const Input = ({
         onChange={(e) => onChange(e.target.value)}
         {...props}
       />
-      {error && <div className={`text-xs text-red-400 pt-2 ${!error && 'pb-4'}`}>error</div>}
+      {error && <div className={`text-xs text-red-400 pt-2 ${!error && 'pb-4'}`}>{error}</div>}
     </div>
   );
 };

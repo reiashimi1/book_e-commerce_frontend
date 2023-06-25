@@ -72,6 +72,11 @@ const AllOrdersPage = () => {
 
   const columns = [
     {
+      id: 'user',
+      name: 'User',
+      cell: (row: any) => row?.user?.firstName + " " + row?.user?.lastName
+    },
+    {
       id: 'title',
       name: 'Book Title',
       cell: (row: any) => row?.book?.title

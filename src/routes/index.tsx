@@ -12,6 +12,7 @@ import BookManagementPage from '../pages/BookManagementPage';
 import MyOrdersPage from '../pages/MyOrdersPage';
 import AllOrdersPage from '../pages/AllOrdersPage';
 import AuthRoute from './AuthRoute';
+import ProfilePage from "../pages/ProfilePage";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         </Route>
         <Route element={<AuthRoute />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/admin-home" element={<AdminHomePage />} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/books/:id" element={<BuyBookPage />} />
