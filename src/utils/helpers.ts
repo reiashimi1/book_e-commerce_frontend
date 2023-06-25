@@ -1,7 +1,7 @@
 import { notify } from 'react-notify-toast';
 
 export const amountFormatter = (
-  amount: number,
+  amount: number | 0,
   currencyCode = 'EUR',
   locales = 'en-US',
   maximumFractionDigits = 2

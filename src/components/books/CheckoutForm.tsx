@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../../core/inputs/Input';
 import AddressSelect, { AddressType } from '../address/AddressSelect';
-import { amountFormatter, isObjectEmpty } from '../../utils/helpers';
+import { amountFormatter, isObjectEmpty, showError, showSuccess } from "../../utils/helpers";
 import { FaInfo } from 'react-icons/fa';
 import { LuShoppingCart, LuView } from "react-icons/lu";
 import SubmitButton from '../../core/buttons/SubmitButton';
+import CustomerService from "../../services/CustomerService";
+import { useNavigate } from "react-router-dom";
 
 type CheckoutType = {
+  userId: string
   bookId: string;
 };
 
-const CheckoutForm = ({ bookId: string }: CheckoutType) => {
+const CheckoutForm = ({ userId, bookId }: CheckoutType) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
   const [selectedAddress, setSelectedAddress] = useState<AddressType>();
 
+  const navigate = useNavigate();
+
   const processPayment = () => {
+    if (!selectedAddress) {
+      console.log('Please select');
+      return;
+    }
+    CustomerService.orderBook(userId, bookId, selectedAddress.id)
+      .then((response) => {
+        showSuccess(response.data.message);
+        navigate('/orders')
+      })
+      .catch((error) => showError(error.response.data.message));
     console.log('processing');
   };
 

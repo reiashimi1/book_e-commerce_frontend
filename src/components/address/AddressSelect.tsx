@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SelectInput, { OptionType } from '../../core/inputs/SelectInput';
-
-const demoAddresses = [
-  { name: 'Address 1', id: '1', city: 'San Francisco', country: 'USA', description: 'adadasda' },
-  { name: 'Address 2', id: '2', city: 'San Francisco', country: 'USA', description: 'adadasda' }
-];
+import { useSelector } from 'react-redux';
+import _ from 'lodash';
+import CustomerService from '../../services/CustomerService';
+import { showError } from '../../utils/helpers';
 
 type AddressSelectType = {
   onChange: (option: AddressType | undefined) => void;
@@ -19,8 +18,9 @@ export type AddressType = {
 };
 
 const AddressSelect = ({ onChange }: AddressSelectType) => {
-  const [addresses, setAddresses] = useState<AddressType[]>(demoAddresses);
+  const [addresses, setAddresses] = useState<AddressType[]>([]);
   const [selectedAddress, setSelectedAddress] = useState<OptionType>();
+  const customerId = useSelector((state) => _.get(state, 'userReducer.id', ''));
 
   const formattedAddresses = addresses.map((address) => {
     return {
@@ -30,8 +30,17 @@ const AddressSelect = ({ onChange }: AddressSelectType) => {
   });
 
   useEffect(() => {
+    CustomerService.getAddresses(customerId)
+      .then((response) => {
+        const { addresses } = response.data.data;
+        setAddresses(addresses);
+      })
+      .catch((error) => showError(error.reponse.data.message));
+  }, []);
+
+  useEffect(() => {
     if (selectedAddress) {
-      const selected = addresses.find((address) => (address.id === selectedAddress.value));
+      const selected = addresses.find((address) => address.id === selectedAddress.value);
       if (selected) {
         onChange(selected);
       }
