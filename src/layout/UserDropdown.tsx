@@ -12,9 +12,8 @@ const UserDropdown = () => {
 
   const navigate = useNavigate();
 
-  // eslint-disable-next-line no-undef
-  // const name = useSelector((state) => _.get(state, 'meReducer.name', 'Name'));
-  const name = 'TEst';
+  const firstName = useSelector((state) => _.get(state, 'userReducer.firstName', ''));
+  const lastName = useSelector((state) => _.get(state, 'userReducer.lastName', ''));
 
   const handleLogout = () => {
     dispatch<any>(logout());
@@ -35,7 +34,7 @@ const UserDropdown = () => {
         }}
         className="p-2 text-sm rounded-l-md font-semibold uppercase cursor-pointer">
         <div className="flex justify-center items-center rounded-full border border-gray-100 shadow-sm w-7 h-7 text-xs bg-cyan-500 text-white">
-          {name && name[0]}
+          {firstName && firstName[0]}{lastName && lastName[0]}
         </div>
       </div>
       <div className="relative">

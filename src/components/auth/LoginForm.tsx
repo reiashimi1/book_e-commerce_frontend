@@ -8,7 +8,6 @@ import _ from 'lodash';
 import { login } from '../../redux/auth/Action';
 import { showError, showSuccess } from '../../utils/helpers';
 import { useDispatch } from 'react-redux';
-import AuthAPI from '../../services/AuthAPI';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -28,9 +27,10 @@ const LoginForm = () => {
         const user = _.get(response, 'data.data.user', '');
         dispatch<any>(login({ access_token }, user));
         if (user.role === 'admin') {
-          navigate('/admin-home');
+          return navigate('/admin-home');
+        } else {
+          return navigate('/');
         }
-        navigate('/');
       })
       .catch((err) => {
         showError(err.response.data.message);

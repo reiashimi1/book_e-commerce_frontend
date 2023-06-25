@@ -9,7 +9,7 @@ const NavigationBar = () => {
         <div className="flex w-full">
           <NavigationRoutes />
         </div>
-        <div className="lg:flex w-full justify-end">
+        <div className="md:flex w-full justify-end">
           <div className="flex mr-6">
             <UserDropdown />
           </div>
