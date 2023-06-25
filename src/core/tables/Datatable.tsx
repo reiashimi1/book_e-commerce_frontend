@@ -6,6 +6,7 @@ import SearchInput from '../inputs/SearchInput';
 type TableProps = {
   columns: TableColumn<any>[];
   totalRows?: number;
+  allowSearch?: boolean;
   getData: (qs: string) => void;
   initialPageSize?: number;
   title: string;
@@ -16,6 +17,7 @@ type TableProps = {
 const Datatable = ({
   columns,
   totalRows,
+  allowSearch = true,
   getData,
   initialPageSize = 10,
   title = '',
@@ -35,9 +37,11 @@ const Datatable = ({
     <div className="flex flex-col w-full justify-center">
       <div className={`flex justify-${title ? 'between' : 'end'} my-2 pt-3 pb-1 items-center`}>
         {title && <label className="text-lg font-bold text-gray-800">{title}</label>}
-        <div className="w-1/3">
-          <SearchInput onChange={setQs} placeholder="Search" />
-        </div>
+        {allowSearch && (
+          <div className="w-1/3">
+            <SearchInput onChange={setQs} placeholder="Search" />
+          </div>
+        )}
       </div>
       <hr />
       <DataTable
