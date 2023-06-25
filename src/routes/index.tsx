@@ -7,10 +7,11 @@ import GuestRoute from './GuestRoute';
 import RegisterPage from '../pages/RegisterPage';
 import AdminHomePage from '../pages/AdminHomePage';
 import BooksPage from '../pages/BooksPage';
-import BuyBookPage from "../pages/BuyBookPage";
-import BookManagementPage from "../pages/BookManagementPage";
-import MyOrdersPage from "../pages/MyOrdersPage";
-import AllOrdersPage from "../pages/AllOrdersPage";
+import BuyBookPage from '../pages/BuyBookPage';
+import BookManagementPage from '../pages/BookManagementPage';
+import MyOrdersPage from '../pages/MyOrdersPage';
+import AllOrdersPage from '../pages/AllOrdersPage';
+import AuthRoute from './AuthRoute';
 
 const AppRoutes = () => {
   return (
@@ -19,7 +20,8 @@ const AppRoutes = () => {
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-
+        </Route>
+        <Route element={<AuthRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin-home" element={<AdminHomePage />} />
           <Route path="/books" element={<BooksPage />} />

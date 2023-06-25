@@ -7,7 +7,7 @@ export type ActionType = {
 }
 
 export type AuthType = {
-  token: string;
+  access_token: string;
 }
 
 export interface Window {

@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineLogout, AiOutlineUser } from 'react-icons/ai';
 import _ from 'lodash';
 import { useNavigate } from 'react-router-dom';
+import { logout } from "../redux/auth/Action";
 
 const UserDropdown = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -16,7 +17,7 @@ const UserDropdown = () => {
   const name = 'TEst';
 
   const handleLogout = () => {
-    // dispatch(logout());
+    dispatch<any>(logout());
   };
 
   const navigateToProfile = () => {

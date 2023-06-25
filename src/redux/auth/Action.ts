@@ -17,8 +17,7 @@ export const removeAuth = () => {
 };
 
 export const login =
-  (authentication: AuthType, user = null) =>
-  async (dispatch: Dispatch<Action>) => {
+  (authentication: AuthType, user: UserType | null) => async (dispatch: Dispatch<Action>) => {
     dispatch(addAuth(authentication));
     if (user) {
       dispatch(addUser(user));
@@ -28,4 +27,11 @@ export const login =
 export const logout = () => async (dispatch: Dispatch<Action>) => {
   dispatch(removeAuth());
   dispatch(removeUser());
+};
+
+type UserType = {
+  firstName: string;
+  lastName: string;
+  role: string;
+  email: string;
 };
