@@ -26,7 +26,7 @@ const AppRoutes = () => {
           <Route path="/admin-home" element={<AdminHomePage />} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/books/:id" element={<BuyBookPage />} />
-          <Route path="/books-admin" element={<BookManagementPage />} />
+          <Route path="/library" element={<BookManagementPage />} />
           <Route path="/orders" element={<MyOrdersPage />} />
           <Route path="/all-orders" element={<AllOrdersPage />} />
         </Route>

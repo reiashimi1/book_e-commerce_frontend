@@ -28,3 +28,23 @@ export const showError = (error = 'Error', timeout = 4000) => {
     text: 'white',
   });
 };
+
+export const fileToBase64 = (file: File | null): Promise<string> => {
+  if (!file) {
+    return Promise.resolve('');
+  }
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        const splitArray = reader.result.split('base64,');
+        resolve(splitArray[1]);
+      } else {
+        reject(new Error('Failed to read file as DataURL.'));
+      }
+    };
+    reader.onerror = (error) => reject(error);
+  });
+};

@@ -6,20 +6,18 @@ import EditBookDetails from './EditBookDetails';
 
 export type BookType = {
   id: string;
-  imageBase64?: string;
+  imageBase64: string;
   title: string;
   author: string;
-  rating: number;
+  rating: string;
   description: string;
+  price: number;
+  onEdit: () => void;
 };
 
-const BookDetails = ({ id, imageBase64, title, author, rating = 5, description }: BookType) => {
+const BookDetails = ({ id, imageBase64, title, author, rating, description, price, onEdit }: BookType) => {
   const [popUp, setPopUp] = useState(false);
-  const ratingArray = Array.from({ length: rating });
-
-  const onSubmit = () => {
-    console.log('onSubmit');
-  };
+  const ratingArray = Array.from({ length: Number(rating) });
 
   return (
     <>
@@ -48,12 +46,13 @@ const BookDetails = ({ id, imageBase64, title, author, rating = 5, description }
       <EditBookDetails
         isOpen={popUp}
         onClose={() => setPopUp(false)}
-        onSubmit={onSubmit}
+        onSubmit={onEdit}
         bookImageBase64={imageBase64}
-        bookRating={rating.toString()}
+        bookRating={rating}
         bookAuthor={author}
         bookId={id}
         bookTitle={title}
+        bookPrice={price}
         bookDescription={description}
       />
     </>

@@ -1,94 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '../../core/modals/Modal';
 import { FaBook } from 'react-icons/fa';
-import EditButton from '../../core/buttons/EditButton';
 import Input from '../../core/inputs/Input';
+import AddButton from '../../core/buttons/AddButton';
 import FileInput from '../../core/inputs/FileInput';
 import AdminService from '../../services/AdminService';
 import { showError, showSuccess } from '../../utils/helpers';
+import { set } from "lodash";
 
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: () => void;
-  bookId: string;
-  bookImageBase64: string;
-  bookTitle: string;
-  bookAuthor: string;
-  bookRating: string;
-  bookPrice: number;
-  bookDescription: string;
 };
 
-const EditBookDetails = ({
-  isOpen,
-  onClose,
-  onSubmit,
-  bookId,
-  bookImageBase64,
-  bookTitle,
-  bookAuthor,
-  bookRating,
-  bookPrice,
-  bookDescription
-}: ModalProps) => {
+const AddBookModal = ({ isOpen, onClose, onSubmit }: ModalProps) => {
   const [image, setImage] = useState('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [rating, setRating] = useState('');
-  const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
+  const [price, setPrice] = useState(0);
 
   const clearFields = () => {
-    setImage('');
     setTitle('');
+    setAuthor('');
+    setRating('');
     setDescription('');
     setPrice(0);
-    setRating('');
-    setAuthor('');
   };
 
-  const closeModal = () => {
-    clearFields();
-    onClose();
-  };
-
-  const editBook = () => {
-    AdminService.updateBook(bookId, {
-      title,
-      author,
-      description,
-      imageUrl: image || bookImageBase64,
-      rating,
-      price
-    })
+  const addBook = () => {
+    AdminService.createBook({ title, author, description, imageUrl: image, rating, price })
       .then((response) => {
         showSuccess(response.data.message);
         clearFields();
-        closeModal();
         onSubmit();
+        onClose();
       })
       .catch((err) => showError(err.response.data.message));
   };
 
-  useEffect(() => {
-    !!bookTitle && setTitle(bookTitle);
-    !!bookAuthor && setAuthor(bookAuthor);
-    !!bookRating && setRating(bookRating);
-    !!bookPrice && setPrice(bookPrice);
-    !!bookDescription && setDescription(bookDescription);
-  }, [isOpen]);
-
   return (
     <Modal
       isOpen={isOpen}
-      title="Edit Book Details"
-      onClose={closeModal}
-      icon={<FaBook className="mr-1 text-emerald-600" />}
+      title="Add book to the library"
+      onClose={onClose}
+      icon={<FaBook className="mr-1 text-blue-600" />}
       secondButton={
-        <EditButton
-          onClick={editBook}
-          label={<div className="flex items-center">Edit</div>}
+        <AddButton
+          onClick={addBook}
+          label={<div className="flex items-center">Add Book</div>}
           className="ml-2"
         />
       }>
@@ -138,16 +100,11 @@ const EditBookDetails = ({
         height="h-10"
         className="flex-1 mx-5 mt-3"
       />
-      <div className="flex justify-center mt-5">
-        {bookImageBase64 && !image && (
-          <img src={`data:image;base64,${bookImageBase64}`} alt="book cover" className="h-40" />
-        )}
-      </div>
       <div className="w-full px-10 mt-6">
-        <FileInput label="Select another cover image" handleChange={setImage} allowPreviewImage />
+        <FileInput label="Select Book Cover Image" handleChange={setImage} allowPreviewImage />
       </div>
     </Modal>
   );
 };
 
-export default EditBookDetails;
+export default AddBookModal;
