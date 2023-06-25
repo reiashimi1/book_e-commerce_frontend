@@ -12,7 +12,7 @@ export type BookType = {
   rating: string;
   description: string;
   price: number;
-  onEdit: () => void;
+  onEdit?: () => void;
 };
 
 const BookDetails = ({ id, imageBase64, title, author, rating, description, price, onEdit }: BookType) => {

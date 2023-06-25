@@ -7,7 +7,7 @@ import { isArrayEmpty, showError } from "../utils/helpers";
 import AddButton from '../core/buttons/AddButton';
 import AddBookModal from '../components/books/AddBookModal';
 
-interface Book {
+export interface Book {
   id: string;
   title: string;
   author: string;

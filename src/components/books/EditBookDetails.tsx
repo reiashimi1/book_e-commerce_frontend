@@ -10,7 +10,7 @@ import { showError, showSuccess } from '../../utils/helpers';
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit?: () => void;
   bookId: string;
   bookImageBase64: string;
   bookTitle: string;
@@ -66,7 +66,9 @@ const EditBookDetails = ({
         showSuccess(response.data.message);
         clearFields();
         closeModal();
-        onSubmit();
+        if (onSubmit) {
+          onSubmit();
+        }
       })
       .catch((err) => showError(err.response.data.message));
   };

@@ -3,17 +3,10 @@ import bookCover from '../../images/book-cover.jpg';
 import { AiFillStar } from 'react-icons/ai';
 import ViewButton from '../../core/buttons/ViewButton';
 import { useNavigate } from 'react-router-dom';
+import { BookType } from "./BookDetails";
 
-type BookType = {
-  id: string;
-  imageBase64?: string;
-  title: string;
-  author: string;
-  rating: number;
-};
-
-const BookSection = ({ id, imageBase64, title, author, rating = 5 }: BookType) => {
-  const ratingArray = Array.from({ length: rating });
+const BookSection = ({ id, imageBase64, title, author, rating, description, price, onEdit }: BookType) => {
+  const ratingArray = Array.from({ length: Number(rating) });
 
   const navigate = useNavigate();
 

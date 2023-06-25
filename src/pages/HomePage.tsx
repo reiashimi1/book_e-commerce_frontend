@@ -43,7 +43,7 @@ const HomePage = () => {
         <div className="w-2/3 justify-center flex flex-col items-center">
           <div className="text-center text-2xl text-cyan-700 uppercase mb-4 font-semibold">Do not wait</div>
           <SubmitButton
-            className="w-1/4"
+            className="w-1/4 flex justify-center"
             label={
               <div className="flex items-center hover:scale-110">
                 <LuView className="mr-2 w-4 h-4" />

@@ -44,7 +44,7 @@ const AdminHomePage = () => {
             New books for customers?
           </div>
           <SubmitButton
-            className="w-1/4"
+            className="w-1/4 flex justify-center"
             label={
               <div className="flex items-center hover:scale-110">
                 <LuBookUp className="mr-2 w-5 h-5" />
