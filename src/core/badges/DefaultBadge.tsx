@@ -12,8 +12,8 @@ const DefaultBadge = ({ text, textColor, bgColor }: BadgeProps) => {
       className={`inline-flex 
       items-center 
       justify-center 
-      px-2 
-      py-1 
+      px-3 
+      py-2 
       text-xs 
       font-medium 
       leading-4 

@@ -30,7 +30,10 @@ const AdminService = {
       imageUrl,
       description,
       pdfBase64: ''
-    })
+    }),
+  getAllOrders: () => API.get('/orders/all'),
+  changeStatus: (id: string, status: string, bookPrice: number, shippingCost = 0) =>
+    API.patch(`/orders/${id}/update`, { status, bookPrice, shippingCost })
 };
 
 export default AdminService;

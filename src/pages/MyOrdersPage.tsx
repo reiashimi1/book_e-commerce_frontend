@@ -14,9 +14,9 @@ const MyOrdersPage = () => {
   const customerId = useSelector((state) => _.get(state, 'userReducer.id', ''));
 
   const statusFormatter = (status: string) => {
-    if (status === 'pending') {
+    if (status === 'PENDING') {
       return <PendingBadge text={status} />;
-    } else if (status === 'approved') {
+    } else if (status === 'CONFIRMED') {
       return <ApprovedBadge text={status} />;
     } else {
       return <CanceledBadge text={status} />;
@@ -73,7 +73,7 @@ const MyOrdersPage = () => {
   return (
     <Layout>
       <div className="flex justify-center mt-10">
-        <div className="w-5/6">
+        <div className="md:w-5/6 md:mx-0 mx-5">
           <Datatable
             columns={columns}
             allowSearch={false}
